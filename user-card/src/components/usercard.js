@@ -37,11 +37,15 @@ class UserCard extends React.Component {
           <CardText>followers: {this.props.user.followers}</CardText>
           <CardText>Location: {this.props.user.location}</CardText>
           <CardText>Public Repos: {this.props.user.public_repos}</CardText>
-          <Button onClick={this.changeHandle}>Click to view Repos</Button>
+          <Button onClick={this.changeHandle}>
+            {this.state.toggle === false
+              ? "Click to view Repos"
+              : "Click to Hide"}
+          </Button>
           <Collapse isOpen={this.state.toggle}>
             {this.state.repos.map((data) => (
               <Card>
-                <CardLink href={data.archive_url}>{data.name}</CardLink>
+                <CardLink href={data.clone_url}>{data.name}</CardLink>
               </Card>
             ))}
           </Collapse>
